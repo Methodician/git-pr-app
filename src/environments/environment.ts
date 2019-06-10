@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  githubKey: "60a7f004569bf97300e1245ec6e2c0724673dbb4",
+  repos: [
+    { name: "CGG", path: "alchemycodelab/caregiver-go" },
+    { name: "YYC-Migration", path: "alchemycodelab/yoyo-migration-server" },
+    { name: "YYC-Server", path: "alchemycodelab/yoyo-server" },
+    { name: "YYC", path: "alchemycodelab/yoyochinese" }
+  ]
 };
 
 /*
