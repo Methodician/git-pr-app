@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  githubKey: "60a7f004569bf97300e1245ec6e2c0724673dbb4",
+  githubKey: "cae9f49cda8c4d531336c814758e9dca5a1db0db",
   repos: [
     { name: "CGG", path: "alchemycodelab/caregiver-go" },
     { name: "YYC-Migration", path: "alchemycodelab/yoyo-migration-server" },

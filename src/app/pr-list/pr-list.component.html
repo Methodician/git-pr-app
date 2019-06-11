@@ -1,10 +1,10 @@
 <h2>Click a PR to go.</h2>
+<span>
+  <button *ngFor="let repo of repos" (click)="setRepo(repo)">
+    <h2>{{ repo.name }}</h2>
+  </button>
+</span>
 <ul>
-  <li *ngFor="let repo of repos">
-    <button (click)="setRepo(repo)">
-      <h2>{{ repo.name }}</h2>
-    </button>
-  </li>
   <li>
     <h2>
       <a target="_blank" rel="noopener" href="https://angular.io/tutorial"

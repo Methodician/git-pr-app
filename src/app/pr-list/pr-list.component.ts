@@ -16,6 +16,6 @@ export class PrListComponent implements OnInit {
 
   setRepo = repo => {
     this.selectedRepo = repo.name;
-    this.gitSvc.getRepoPulls(repo.path).subscribe(res => console.log(res));
+    this.gitSvc.getAllPulls().then(res => console.log(res));
   };
 }
