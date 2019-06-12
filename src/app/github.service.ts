@@ -1,31 +1,56 @@
 import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment as env } from "../environments/environment";
-import * as prs from "pr-monitor";
+import { combineLatest } from "rxjs";
+import { retry, map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
 })
 export class GithubService {
   token = env.githubKey;
+  headers = new HttpHeaders({ Authorization: `token ${this.token}` });
 
-  getAllPulls = async () => {
-    const repos = env.repos.map(repo => repo.path);
-    console.log("repos", repos);
-    try {
-      const data = await prs(env.githubKey, repos, { count: false });
+  constructor(private http: HttpClient) {}
 
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
+  getManyPulls = (repos: string[]) => {
+    const observables = repos.map(path => this.getRepoPulls(path));
+    return combineLatest(observables);
   };
 
-  // getRepoPulls = repo => {
-  //   return this.http
-  //     .get(this.pullsURLFromRepo(repo), { headers: this.headers })
-  //     .pipe(retry(3));
-  // };
+  getRepoPulls = repo => {
+    return this.http
+      .get(this.pullsURLFromRepoPath(repo), { headers: this.headers })
+      .pipe(
+        retry(3),
+        map((res: any[]) =>
+          res.map(pull => {
+            const {
+              url,
+              user,
+              title,
+              updated_at,
+              html_url,
+              diff_url,
+              created_at,
+              head
+            } = pull as any;
+            return {
+              apiUrl: url,
+              userName: user.login,
+              title,
+              repo: head.repo.name,
+              diffUrl: diff_url,
+              htmlUrl: html_url,
+              createdAt: created_at,
+              updatedAt: updated_at
+            };
+          })
+        )
+      );
+  };
 
   // HELPERS
-  pullsURLFromRepo = repo => `https://api.github.com/repos/${repo}/pulls`;
+  pullsURLFromRepoPath = (repoPath: string) =>
+    `https://api.github.com/repos/${repoPath}/pulls`;
 }

@@ -1,5 +1,8 @@
 <h2>Click a PR to go.</h2>
 <span>
+  <button (click)="allRepos()">
+    <h2>ALL REPOS</h2>
+  </button>
   <button *ngFor="let repo of repos" (click)="setRepo(repo)">
     <h2>{{ repo.name }}</h2>
   </button>

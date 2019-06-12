@@ -14,8 +14,15 @@ export class PrListComponent implements OnInit {
 
   ngOnInit() {}
 
+  allRepos = () => {
+    const paths = this.repos.map(repo => repo.path);
+    this.gitSvc
+      .getManyPulls(paths)
+      .subscribe(res => console.log([].concat.apply([], res)));
+  };
+
   setRepo = repo => {
     this.selectedRepo = repo.name;
-    this.gitSvc.getAllPulls().then(res => console.log(res));
+    this.gitSvc.getRepoPulls(repo.path).subscribe(res => console.log(res));
   };
 }
