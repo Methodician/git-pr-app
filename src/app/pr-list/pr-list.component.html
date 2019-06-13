@@ -7,7 +7,17 @@
     <h2>{{ repo.name }}</h2>
   </button>
 </span>
+table
 <ul>
+  <li *ngFor="let pr of prs">
+    <h2>
+      <a target="_blank" [href]="pr.htmlUrl"
+        ><b>IN</b> {{ pr.repo }} <b>BY</b> {{ pr.userName }}
+        <b>ON</b>
+        {{ pr.createdAt | date: "short" }} || {{ pr.title }}</a
+      >
+    </h2>
+  </li>
   <li>
     <h2>
       <a target="_blank" rel="noopener" href="https://angular.io/tutorial"
