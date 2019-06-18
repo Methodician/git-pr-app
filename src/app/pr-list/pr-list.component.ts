@@ -10,15 +10,18 @@ import { environment as env } from "../../environments/environment";
 export class PrListComponent implements OnInit {
   repos = env.repos;
   selectedRepo;
+  prs: Object[];
   constructor(private gitSvc: GithubService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.allRepos();
+  }
 
   allRepos = () => {
     const paths = this.repos.map(repo => repo.path);
     this.gitSvc
       .getManyPulls(paths)
-      .subscribe(res => console.log([].concat.apply([], res)));
+      .subscribe(res => (this.prs = [].concat.apply([], res)));
   };
 
   setRepo = repo => {
