@@ -17,15 +17,29 @@ export class PrListComponent implements OnInit {
     this.allRepos();
   }
 
+  sortPulls = e => {
+    console.log(e);
+  };
+
+  selectRepo = e => {
+    const {
+      value,
+      value: { name }
+    } = e;
+    if (name === "ALL") this.allRepos();
+    else this.setRepo(value);
+  };
+
   allRepos = () => {
     const paths = this.repos.map(repo => repo.path);
     this.gitSvc
       .getManyPulls(paths)
       .subscribe(res => (this.prs = [].concat.apply([], res)));
+    this.selectedRepo = "all";
   };
 
   setRepo = repo => {
     this.selectedRepo = repo.name;
-    this.gitSvc.getRepoPulls(repo.path).subscribe(res => console.log(res));
+    this.gitSvc.getRepoPulls(repo.path).subscribe(res => (this.prs = res));
   };
 }
