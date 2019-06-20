@@ -1,26 +1,38 @@
-<h2>Click a PR to go.</h2>
-<mat-button-toggle-group
-  (change)="selectRepo($event)"
-  name="repoSelection"
-  area-label="Select a Repo"
-  checked="true"
->
-  <mat-button-toggle [value]="{ name: 'ALL', path: null }"
-    >ALL REPOS</mat-button-toggle
+<div class="container">
+  <h2>Click a PR to go.</h2>
+  <mat-button-toggle-group
+    (change)="selectRepo($event)"
+    name="repoSelection"
+    area-label="Select a Repo"
+    checked="true"
   >
-  <mat-button-toggle *ngFor="let repo of repos" [value]="repo">{{
-    repo.name
-  }}</mat-button-toggle>
-</mat-button-toggle-group>
-table
-<ul>
-  <li *ngFor="let pr of prs">
-    <h2>
-      <a target="_blank" [href]="pr.htmlUrl"
-        ><b>IN</b> {{ pr.repo }} <b>BY</b> {{ pr.userName }}
-        <b>ON</b>
-        {{ pr.createdAt | date: "short" }} || {{ pr.title }}</a
-      >
-    </h2>
-  </li>
-</ul>
+    <mat-button-toggle [value]="{ name: 'ALL', path: null }"
+      >ALL REPOS</mat-button-toggle
+    >
+    <mat-button-toggle *ngFor="let repo of repos" [value]="repo">{{
+      repo.name
+    }}</mat-button-toggle>
+  </mat-button-toggle-group>
+  table
+  <table matSort (matSortChange)="sortPulls($event)">
+    <tr>
+      <th class="table-header link-header">link</th>
+      <th class="table-header repo-header" mat-sort-header="repo">Repo</th>
+      <th class="table-header user-header" mat-sort-header="user">
+        Submitted By
+      </th>
+      <th class="table-header created-header" mat-sort-header="created">
+        Creation Date
+      </th>
+      <th class="table-header title" mat-sort-header="title">Title</th>
+    </tr>
+
+    <tr *ngFor="let pr of prs">
+      <td><a target="_blank" [href]="pr.htmlUrl">GO</a></td>
+      <td>{{ pr.repo }}</td>
+      <td>{{ pr.userName }}</td>
+      <td>{{ pr.createdAt | date: "short" }}</td>
+      <td>{{ pr.title }}</td>
+    </tr>
+  </table>
+</div>

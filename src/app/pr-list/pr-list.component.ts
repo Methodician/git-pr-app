@@ -17,6 +17,10 @@ export class PrListComponent implements OnInit {
     this.allRepos();
   }
 
+  sortPulls = e => {
+    console.log(e);
+  };
+
   selectRepo = e => {
     const {
       value,
