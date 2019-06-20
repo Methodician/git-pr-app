@@ -16,7 +16,7 @@
   table
   <table matSort (matSortChange)="sortPulls($event)">
     <tr>
-      <th class="table-header link-header">link</th>
+      <th class="table-header link-header"></th>
       <th class="table-header repo-header" mat-sort-header="repo">Repo</th>
       <th class="table-header user-header" mat-sort-header="user">
         Submitted By
@@ -28,7 +28,11 @@
     </tr>
 
     <tr *ngFor="let pr of prs">
-      <td><a target="_blank" [href]="pr.htmlUrl">GO</a></td>
+      <td>
+        <a target="_blank" [href]="pr.htmlUrl"
+          ><button mat-mini-fab>GO</button></a
+        >
+      </td>
       <td>{{ pr.repo }}</td>
       <td>{{ pr.userName }}</td>
       <td>{{ pr.createdAt | date: "short" }}</td>

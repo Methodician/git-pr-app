@@ -7,7 +7,11 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // Angular Material
-import { MatButtonToggleModule, MatTableModule } from "@angular/material";
+import {
+  MatButtonToggleModule,
+  MatTableModule,
+  MatButtonModule
+} from "@angular/material";
 
 @NgModule({
   declarations: [AppComponent, PrListComponent],
@@ -16,7 +20,8 @@ import { MatButtonToggleModule, MatTableModule } from "@angular/material";
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonToggleModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
