@@ -6,7 +6,7 @@
     area-label="Select a Repo"
     checked="true"
   >
-    <mat-button-toggle [value]="{ name: 'ALL', path: null }"
+    <mat-button-toggle checked="true" [value]="{ name: 'ALL', path: null }"
       >ALL REPOS</mat-button-toggle
     >
     <mat-button-toggle *ngFor="let repo of repos" [value]="repo">{{
