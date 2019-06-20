@@ -17,6 +17,15 @@ export class PrListComponent implements OnInit {
     this.allRepos();
   }
 
+  selectRepo = e => {
+    const {
+      value,
+      value: { name }
+    } = e;
+    if (name === "ALL") this.allRepos();
+    else this.setRepo(value);
+  };
+
   allRepos = () => {
     const paths = this.repos.map(repo => repo.path);
     this.gitSvc

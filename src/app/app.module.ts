@@ -7,7 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 // Angular Material
-import { MatButtonModule, MatTableModule } from "@angular/material";
+import { MatButtonToggleModule, MatTableModule } from "@angular/material";
 
 @NgModule({
   declarations: [AppComponent, PrListComponent],
@@ -15,7 +15,7 @@ import { MatButtonModule, MatTableModule } from "@angular/material";
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatButtonModule,
+    MatButtonToggleModule,
     MatTableModule
   ],
   providers: [],

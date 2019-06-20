@@ -1,17 +1,17 @@
 <h2>Click a PR to go.</h2>
-<span>
-  <button mat-raised-button color="primary" (click)="allRepos()">
-    <h2>ALL REPOS</h2>
-  </button>
-  <button
-    mat-stroked-button
-    color="primary"
-    *ngFor="let repo of repos"
-    (click)="setRepo(repo)"
+<mat-button-toggle-group
+  (change)="selectRepo($event)"
+  name="repoSelection"
+  area-label="Select a Repo"
+  checked="true"
+>
+  <mat-button-toggle [value]="{ name: 'ALL', path: null }"
+    >ALL REPOS</mat-button-toggle
   >
-    <h2>{{ repo.name }}</h2>
-  </button>
-</span>
+  <mat-button-toggle *ngFor="let repo of repos" [value]="repo">{{
+    repo.name
+  }}</mat-button-toggle>
+</mat-button-toggle-group>
 table
 <ul>
   <li *ngFor="let pr of prs">
