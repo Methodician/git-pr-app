@@ -22,10 +22,11 @@ export class PrListComponent implements OnInit {
     this.gitSvc
       .getManyPulls(paths)
       .subscribe(res => (this.prs = [].concat.apply([], res)));
+    this.selectedRepo = "all";
   };
 
   setRepo = repo => {
     this.selectedRepo = repo.name;
-    this.gitSvc.getRepoPulls(repo.path).subscribe(res => console.log(res));
+    this.gitSvc.getRepoPulls(repo.path).subscribe(res => (this.prs = res));
   };
 }
