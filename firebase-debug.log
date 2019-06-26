@@ -1,0 +1,27 @@
+[debug] [2019-06-26T19:08:33.622Z] ----------------------------------------------------------------------
+[debug] [2019-06-26T19:08:33.624Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-06-26T19:08:33.624Z] CLI Version:   7.0.0
+[debug] [2019-06-26T19:08:33.624Z] Platform:      win32
+[debug] [2019-06-26T19:08:33.624Z] Node Version:  v11.15.0
+[debug] [2019-06-26T19:08:33.625Z] Time:          Wed Jun 26 2019 12:08:33 GMT-0700 (Pacific Daylight Time)
+[debug] [2019-06-26T19:08:33.625Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-06-26T19:08:33.633Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-06-26T19:08:33.633Z] > authorizing via signed-in user
+[debug] [2019-06-26T19:08:33.633Z] [iam] checking project github-pr-monitor-53bc2 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-06-26T19:08:33.634Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/github-pr-monitor-53bc2:testIamPermissions  
+
+[debug] [2019-06-26T19:08:33.849Z] <<< HTTP RESPONSE 200
+[debug] [2019-06-26T19:08:33.852Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/github-pr-monitor-53bc2  
+ 
+[debug] [2019-06-26T19:08:34.275Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'github-pr-monitor-53bc2'...
+[info] 
+[info] i  deploying firestore, hosting
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-06-26T19:08:34.301Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/github-pr-monitor-53bc2:test  
+
+[debug] [2019-06-26T19:08:34.693Z] <<< HTTP RESPONSE 200
+[info] +  firestore: rules file firestore.rules compiled successfully

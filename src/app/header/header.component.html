@@ -1,0 +1,4 @@
+<p>hello {{ (loggedInUser$ | async)?.email }}</p>
+<button (click)="onViewClicked('pr-list')">list</button>
+<button (click)="onViewClicked('setup')">config</button>
+<button (click)="onViewClicked('auth')">auth</button>
