@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "prod": "github-pr-monitor-53bc2"
+  },
+  "targets": {
+    "github-pr-monitor-53bc2": {
+      "hosting": {
+        "git-pr-app": [
+          "github-pr-monitor-53bc2"
+        ]
+      }
+    }
+  }
+}
